@@ -1,0 +1,17 @@
+
+<%= image_tag current_user.user_image, class: "img-rounded" %>
+
+<h3>Name:  </h3>
+<p><%= current_user.prename %> <%= current_user.lastname %></p>
+<h3>Email: </h3>
+<p><%= current_user.email %></p>
+<h3>Date of Birth: </h3>
+<p><%= current_user.dob %></p>
+
+
+
+<%= link_to 'Edit', edit_user_registration_path, :class => 'btn btn-large btn-primary'%>
+
+
+
+

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  classroom_id: 
+  course_id: 
+  bookingdate: 2014-12-15
+  timeslot: MyString
+
+two:
+  classroom_id: 
+  course_id: 
+  bookingdate: 2014-12-15
+  timeslot: MyString

@@ -1,0 +1,20 @@
+<h1>All Students booked on a course:</h1>
+
+
+    <% @students.each do |student| %>
+  
+        <h3>Name: </h3>
+        <p><%= student.fullname %></p> 
+
+        <h3>Date ob Birth: </h3>
+        <p><%= student.dob %></p> 
+     
+      <br>
+      <br>
+    <% end %>
+
+
+
+<br>
+
+

@@ -1,0 +1,52 @@
+<!-- <h1>Filter Courses:</h1>
+ -->
+
+<%#= search_form_for @q do |c| %>
+<!-- 
+<div class="field"> -->
+  <%#=c.label :coursetype %>
+
+  <%#= c.collection_select(:coursetype_id, Coursetype.<!-- all, : -->id, :name)%>
+<!-- </div> -->
+
+<!-- <div class="field"> -->
+<%#=c.label :dates %>
+
+<%#= c.collection_select(:course, Course.course_in_the_past, :id, :name)%>
+<!-- </div>
+-->
+<!-- <div class="actions">
+  <%#= c.submit%>
+</div> -->
+
+
+<h1>All GA courses:</h1>
+<br>
+
+  <% @courses.each do |course| %>
+  <div class="allusers">
+
+    <h1><strong><%= course.name %></strong></h1>
+
+    <p><%= course.coursetype.try :name %></p>
+
+    <h3>Course-Start: </h3>
+    <p><%= course.start_date %></p>
+
+    <h3>Course-End: </h3>
+    <p><%= course.end_date %></p>
+
+   
+
+    <%= link_to 'Show this course', course, :class => 'btn btn-large btn-primary' %>
+    <%= link_to 'Edit this course', edit_course_path(course), :class => 'btn btn-large btn-primary' if can? :edit, Course %>
+    <%= link_to 'Delete this course', course, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-large btn-primary' if can? :destroy, Course %>
+    </div>
+  <br>
+  <br>
+
+  <% end %>
+
+<br>
+
+

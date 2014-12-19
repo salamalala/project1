@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @classroom.name %>
+</p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @classroom.capacity %>
+</p>
+
+<p>
+  <strong>Campus:</strong>
+  <%= @classroom.campus.try :name%>
+</p>
+
+<%= link_to 'Edit', edit_classroom_path(@classroom), :class => 'btn btn-large btn-primary' if can? :edit_classroom, Classroom %> 
+<%= link_to 'Back', classrooms_path, :class => 'btn btn-large btn-primary' %>

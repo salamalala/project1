@@ -1,0 +1,74 @@
+
+<% if @enrollment && @enrollment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@enrollment.errors.count, "error") %> prohibited this enrollment from being saved:</h2>
+
+    <ul>
+    <% @enrollment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+
+<%= image_tag(@course.coursetype.try(:icon), :class => "coursetype_img")%>
+
+
+
+  <h2><%= @course.name %></h2>
+
+
+<p>
+  <strong>Coursetype:</strong>
+  <%= @course.coursetype.try :name %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @course.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @course.end_date %>
+</p>
+
+
+
+<p>
+  <strong>Description:</strong>
+  <%= @course.coursetype.try :description %>
+</p>
+
+
+
+<p>
+  <strong>Teacher:</strong>
+  <% @course.teachers.each do |teacher|%> 
+  <li><%=teacher.fullname%></li>
+    <% end%>
+  </p>
+
+  <p>
+    <strong>Teacher-Assistants:</strong>
+    <% @course.tas.each do |ta|%> 
+    <li><%= ta.fullname %></li>
+    <% end%>
+  </p>
+
+  <p>
+    <strong>Students:</strong>
+    <% @course.students.each do |student|%> 
+    <li><%=  student.fullname %></li>
+    <% end%>
+  </p>
+
+  
+
+ <td><%= link_to 'Book this course', book_course_path(@course), method: :post, data: { confirm: 'Are you sure you want to book this course?' }, :class => 'btn btn-large btn-primary' if can? :book, Course %></td>
+
+  <%= link_to 'Edit', edit_course_path(@course), :class => 'btn btn-large btn-primary' if can? :edit, Course%>
+  <%= link_to 'Back', courses_path, :class => 'btn btn-large btn-primary' %>

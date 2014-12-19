@@ -1,0 +1,38 @@
+
+<%= nav_bar :fixed => :top, :responsive => true do %>
+    <div class="title">
+    <%= menu_group :pull => :left do %>
+    <%= menu_item "GENERAL ASSEMBLY"%>
+
+    <% end %>
+    </div>
+
+
+    <%= menu_group :pull => :right do %>
+        <% if current_user %>
+        <%= menu_item "Log Out", destroy_user_session_path, method: :delete %>
+        <% else %>
+        <% end %>
+    <% end %>
+
+    <%= menu_group do %>
+
+    <%= menu_divider %>
+        <% if can? :read, Course%>
+        <%= drop_down  "Courses" do %>
+        <%= menu_item("All Courses", courses_path) if can? :read, Course %>
+        -        <%= menu_item "Create new course", new_course_path if can? :create, Course %>
+        -        <%#= menu_item "My Courses", courses_path if can? :read, Course %>
+        <% end   %>
+        <% end   %>
+
+
+    <%= menu_item "All Teachers", teachers_path if can? :read, :teacher %>
+    <%= menu_item "All Users", users_path if can? :read, User %>
+    <%= menu_item "Classrooms", classrooms_path if can? :read, Classroom %>
+    <%= menu_item "My Profile",  my_profile_path if current_user %>
+
+    <% end %>
+
+
+<% end %>

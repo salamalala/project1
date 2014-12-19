@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GaScheduleApp</title>
+  <link href='http://fonts.googleapis.com/css?family=News+Cycle:400,700' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <%=image_tag "ga.png", class: "brand", :data =>  {"20" => "transform[bounce]:rotate(0deg); left: 10px; top: 80px", "2000" => "transform[bounce]:rotate(360deg); left: 10px; top: 35px"} %>
+
+
+  <div class='login'>
+    <% if current_user %>
+    <%= current_user.email %>
+    <%#= link_to "Log out", destroy_user_session_path, method: :delete %>
+    <% else %>
+    <%#= link_to "Sign In", new_user_session_path %>
+    <%#= link_to "Register", new_user_registration_path %>
+    <% end %>
+  </div>
+
+  
+  <%= render partial: "/layouts/menu"%>
+
+  <div class="signup">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
+
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+
+<footer class="footer navbar-fixed-bottom">
+ <p>If you have any questions or suggestions to improve our App, please contact us on <%= mail_to "help@ga.co.uk" %></p>
+ <p>© 2014 General Assembly. All rights reserved.</p>
+</footer>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<%= form_for(@course) do |f| %>
+<% if @course.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+  <ul>
+    <% @course.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+</div>
+<br>
+<div class="field">
+  <%= f.label :start_date %><br>
+  <%= f.date_select :start_date, :order => [:day, :month, :year]%>
+</div>
+<br>
+<div class="field">
+  <%= f.label :end_date %><br>
+  <%= f.date_select :end_date, :order => [:day, :month, :year] %>
+</div>
+<br>
+
+<div class="field">
+  <%= f.label :coursetype_id %><br>
+
+  <%= f.collection_select(:coursetype_id, (Coursetype.order :name).distinct,:id,:name, prompt: :true)%>
+</div>
+<br>
+
+<!-- set up boolean to make that working (@teachers) -->
+<div class="field">
+  <%= f.label :teacher_id %><br>
+  <%= f.collection_select(:teacher_id, @teachers, :id, :fullname, prompt: :true)%>
+</div>
+<br>
+
+<div class="field">
+  <%= f.label "Teacher-Assistants: "%><br>
+ <%= f.collection_check_boxes(:ta_ids, @tas, :id, :fullname) do |b| -%>
+
+  <%= b.check_box %>
+  <%= b.label %>
+  <br>
+  <%end%>
+  <div class="field">
+
+    <br>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

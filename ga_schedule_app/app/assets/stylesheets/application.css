@@ -1,0 +1,201 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+
+ body{
+  font-family: 'News Cycle', sans-serif;
+  letter-spacing: 2px;
+  line-height: 1.7;
+  font-size: 1.5em;
+ }
+
+
+ .container-fluid{
+   margin-top: 40px;
+   margin-bottom: 120px;
+ }
+
+ .navbar{
+  background-color: black;
+ }
+
+ .navbar-nav{
+  float:right;
+ }
+
+ .navbar li a:hover{
+  color: white;
+ }
+
+ .navbar-default .navbar-nav>li>a{
+  color: white;
+ }
+
+ .navbar-default .navbar-nav>li>a:hover{
+  color: #fe0034; 
+ }
+
+ .dropdown-menu>li>a:hover{
+  color: #fe0034;
+ }
+
+
+  .login{
+  top: 50px;
+  right: 0px;
+  position: fixed;
+ }
+
+
+ .signup{
+  margin-top: 50px;
+ }
+
+ .notice{
+  text-align: center;
+  margin-top: 80px;
+  font-size: 3em;
+ }
+
+ .brand{
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 10000;
+  height: 100px;
+  width: 100px;
+ }
+
+ .img-rounded{
+  border-radius: 100%;
+  width: 70px;
+  height: 70px;
+ }
+
+ .allusers{
+  background: #F0F4F5;
+  padding: 20px;
+  list-style-type: none;
+  font-size: 1.5em;
+ }
+
+ .allusers .img-rounded{
+  margin-right: 50px;
+  float: left;
+ }
+
+.text_teacher{
+  text-align: right
+}
+
+.photo_teacher{
+  float:right;
+}
+
+#img-teacher{
+  width: 200px;
+  height: 200px;
+}
+
+
+
+ .btn{
+  background-color: #5A7B82;
+  border: #5A7B82;
+  border-radius: 3px;
+  margin-top: 10px;
+ }
+
+ .btn:hover{
+  background-color: black
+ }
+ #user_email{
+  width: 100%;
+  height: 60px;
+  padding: 10px;
+  margin-bottom: 30px;
+ }
+
+ #user_password{
+  width: 100%;
+  height: 60px;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+input[type="submit"]{
+  -webkit-appearance: none;
+  margin-top: 20px;
+  width: 100%;
+  height: 60px;
+  background-color: #5A7B82;
+  padding: 10px;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  margin-bottom: 30px;
+}
+
+
+
+
+footer{
+  text-align: center;
+  background-color:  #304145;
+  color: white;
+  padding: 20px;
+
+}
+
+.title{
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.alert{
+  color: #fe0034; 
+  text-align: center;
+  font-size: 3em;
+}
+
+.coursetype_img{  
+  border: black solid;
+}
+
+a{
+  color:#304145 ;
+}
+
+
+
+a:hover{
+  font-weight: bold;
+  color:#304145 ;
+  text-decoration: none;
+}
+
+footer a{
+  color: white ;
+}
+
+footer a:hover{
+  color: white ;
+  font-weight: bold;
+  text-decoration: none;
+
+}
+
