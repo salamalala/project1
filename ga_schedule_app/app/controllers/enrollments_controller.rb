@@ -36,6 +36,10 @@ class EnrollmentsController < ApplicationController
     respond_with(@enrollment)
   end
 
+  def mine_booked
+    @enrollments = Enrollment.where(user_id: current_user.id, courserole: :student)
+    respond_with(@enrollments)
+  end
   
 
   private

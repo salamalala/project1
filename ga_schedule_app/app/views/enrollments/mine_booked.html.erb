@@ -1,0 +1,9 @@
+
+
+<h1>My booked courses:</h1>
+<br>
+<% @enrollments.collect do |enrollment| %> 
+<h1><strong><%= enrollment.course.name %></strong></h1>
+
+<%end%>
+  

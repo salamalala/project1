@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   post "/courses/:id/book", to: "courses#book", as: :book_course
 
-  get "/courses/mine_booked", to: "courses#mine_booked", as: :mine_booked
+  get "/enrollments/mine_booked", to: "enrollments#mine_booked", as: :mine_booked
 
   resources :teachers
 

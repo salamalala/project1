@@ -22,7 +22,7 @@
         <%= drop_down  "Courses" do %>
         <%= menu_item("All Courses", courses_path) if can? :read, Course %>
         -        <%= menu_item "Create new course", new_course_path if can? :create, Course %>
-        -        <%#= menu_item "My Courses", courses_path if can? :read, Course %>
+        -        <%= menu_item "My Courses", mine_booked_path if can? :read, Course %>
         <% end   %>
         <% end   %>
 

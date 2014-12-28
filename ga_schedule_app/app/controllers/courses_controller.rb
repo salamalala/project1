@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :book_course, :mine_booked]
+before_action :set_course, only: [:show, :edit, :update, :destroy, :book_course]
 
  before_action :set_teachers, only: [:new, :edit, :update, :create]
 
@@ -55,9 +55,7 @@ class CoursesController < ApplicationController
     end
   end
 
-  def mine_booked
-    @course.enrollments.where(user_id: current_user.id, courserole: :student)
-  end
+ 
 
   private
     def set_course
