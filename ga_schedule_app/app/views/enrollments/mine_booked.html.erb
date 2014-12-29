@@ -11,9 +11,18 @@
 
 <h3>Course-End: </h3>
 <p><%= enrollment.course.end_date %></p>
+
+<br>
+<%= link_to 'Cancel my enrollment', enrollment, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-large btn-primary' if can? :destroy, Enrollment %>
+
+
+
+
     </div>
   <br>
   <br>
+
+
 
   <% end %>
 

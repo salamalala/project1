@@ -39,7 +39,7 @@ class EnrollmentsController < ApplicationController
   def mine_booked
     @enrollments = Enrollment.where(user_id: current_user.id, courserole: :student)
     if @enrollments.empty?
-      redirect_to  :back, notice: "You haven't booked a course with GA yet! Book one now".html_safe
+      redirect_to  :back, notice: "You haven't booked a course with GA yet. Book one now!".html_safe
     else
       respond_with(@enrollments)
     end
