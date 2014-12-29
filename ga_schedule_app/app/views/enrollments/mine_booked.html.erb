@@ -1,9 +1,20 @@
 
-
-<h1>My booked courses:</h1>
+<h1>Courses I have booked:</h1>
 <br>
 <% @enrollments.collect do |enrollment| %> 
-<h1><strong><%= enrollment.course.name %></strong></h1>
+<div class="allusers">
 
-<%end%>
-  
+<h1><strong><%= enrollment.course.try :name %></strong></h1>
+
+<h3>Course-Start: </h3>
+<p><%= enrollment.course.start_date %></p>
+
+<h3>Course-End: </h3>
+<p><%= enrollment.course.end_date %></p>
+    </div>
+  <br>
+  <br>
+
+  <% end %>
+
+<br>

@@ -8,9 +8,11 @@ class Ability
     elsif user.role? :staff
       can :read, :all
       can :book, Course
+      can :mine_booked, Enrollment
     elsif user.role? :client
       can [:show, :edit], User, user_id: user.id
       can :read, Course
+      can :mine_booked, Enrollment
       can :book, Course
       can :read, :teacher
     else

@@ -15,7 +15,7 @@
 <%= link_to "#{user.prename} is registered as a teacher. Is she/he not good enough anymore? Click here!", make_not_teacher_user_path(user), method: :post, :class => 'btn btn-large btn-primary' if can? :make_not_teacher, User %>
 <% else %>
 
-<%= link_to "Did #{user.prename} learn enough ruby and is now qualified to be a teacher? Click here!", make_teacher_user_path(user), method: :post, :class => 'btn btn-large btn-primary'   if can? :make_teacher, User %>
+<%= link_to "Did #{user.prename} learn enough ruby and is now qualified to be a teacher? Click here!", make_teacher_user_path(user), method: :post, :class => 'btn btn-large btn-primary'  if can? :make_teacher, User %>
 <% end %>
 </div>
 <br>
