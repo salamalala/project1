@@ -6,6 +6,8 @@ class Course < ActiveRecord::Base
   has_many :classrooms, through: :bookings
 
   belongs_to :coursetype
+
+  validates :start_date, date: { before: :end_date , message: 'can\'t be before the end date!' }
   
   has_many :teachers, -> { where(enrollments: {courserole: :teacher}) }, through: :enrollments, source: :user
   #this gives a teacher_ids, a collection of all the ids for the teachers. 
@@ -13,6 +15,7 @@ class Course < ActiveRecord::Base
   has_many :tas, -> { where(enrollments: {courserole: :ta}) }, through: :enrollments, source: :user
   has_many :students, -> { where(enrollments: {courserole: :student}) }, through: :enrollments, source: :user
 
+ 
 
   # def self.in_the_past
   #   where("courses.end_date < ?", Date.yesterday)

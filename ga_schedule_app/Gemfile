@@ -40,6 +40,8 @@ gem 'rmagick'
 
 gem 'skrollr-rails'
 
+gem 'date_validator'
+
 
 group :development, :test do
   gem 'pry-rails'
