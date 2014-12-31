@@ -16,7 +16,9 @@ class Course < ActiveRecord::Base
   
   validates :teacher_id, presence: true
 
-  validate :intensity_course
+  validate :immersive_course
+
+  validate :workshop_course
             
 
   has_many :teachers, -> { where(enrollments: {courserole: :teacher}) }, through: :enrollments, source: :user
@@ -26,7 +28,6 @@ class Course < ActiveRecord::Base
   has_many :students, -> { where(enrollments: {courserole: :student}) }, through: :enrollments, source: :user
 
  
-
   # def self.in_the_past
   #   where("courses.end_date < ?", Date.yesterday)
   # end
@@ -57,8 +58,12 @@ class Course < ActiveRecord::Base
   #if coursetype intensity is equal to immersive the end date has to be at least 12 weeks after the start date. 
 
   private
-  def intensity_course
+  def immersive_course
     errors.add :coursetype_id, "\'Immersive Course\' has to be at least 12 weeks long" if coursetype.intensity == "Immersive" && start_date + 12.week > end_date 
+  end
+
+  def workshop_course
+    errors.add :coursetype_id, "\'Workshops\' can't be longer than two days" if coursetype.intensity == "Workshop" && start_date + 2.day < end_date 
   end
 
 
