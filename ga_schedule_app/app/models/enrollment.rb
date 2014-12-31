@@ -8,7 +8,7 @@ class Enrollment < ActiveRecord::Base
   has_many :tas, -> { where {courserole :ta} },  source: :user
   has_many :students, -> { where {courserole :student} }, source: :user
 
-  validates :user_id, uniqueness: {scope: :course, message: "is already booked on this course"}
+  validates :user_id, uniqueness: {scope: :course, message: " is already booked on this course"}, :on => [ :create, :update ]
 
   # validate :teacher_not_already_booked, :on => [ :create, :update ]
 #trying to add a validation for case if teacher is already booked as student. 

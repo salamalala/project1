@@ -7,8 +7,12 @@ class Course < ActiveRecord::Base
 
   belongs_to :coursetype
 
-  validates :start_date, date: { before: :end_date , message: 'can\'t be before the end date!' }
+  validates :start_date, date: { before: :end_date , message: 'of the course can\'t be before the end date!' }
+
+  validates :start_date, date: { after_or_equal_to: Date.today, message: 'can\'t be in the past' }, on: :create
   
+
+
   has_many :teachers, -> { where(enrollments: {courserole: :teacher}) }, through: :enrollments, source: :user
   #this gives a teacher_ids, a collection of all the ids for the teachers. 
 
