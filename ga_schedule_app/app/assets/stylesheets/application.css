@@ -199,3 +199,23 @@ footer a:hover{
 
 }
 
+#error_explanation{
+  margin: 20px 0;
+  background: #F0F4F5;
+  padding: 20px;
+  border: 2px solid #fe0034;
+}
+
+#error_explanation li{
+  list-style: none;
+  font-size: 1.5em;
+}
+
+#error_explanation h2{
+  margin-top: 0;
+}
+
+#error_explanation ul{
+  padding-left: 0
+}
+

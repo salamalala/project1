@@ -10,8 +10,18 @@ class Enrollment < ActiveRecord::Base
 
   validates :user_id, uniqueness: {scope: :course, message: "is already booked on this course"}
 
+  # validate :teacher_not_already_booked, :on => [ :create, :update ]
+#trying to add a validation for case if teacher is already booked as student. 
+
   def fullname
         "#{prename} #{lastname}"
   end
+
+
+  #trying to add a validation for case if teacher is already booked as student. 
+  # private
+  # def teacher_not_already_booked
+  #   errors.add :user_id, "this teacher is already booked as a student on that course" if user_id == teacher_ids
+  # end
 
 end
