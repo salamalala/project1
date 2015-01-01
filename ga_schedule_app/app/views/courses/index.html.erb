@@ -1,17 +1,14 @@
 <h1>Filter Courses:</h1>
+<br>
 
 
 <%= search_form_for @q do |c| %>
 
-<%#= form_for(@course) do |c| %>
 
   <%=c.label :coursetype_id %>
 
 
-  <%= c.collection_select(:coursetype_id_eq, (Coursetype.order :intensity), :id, :intensity) %>
-
- 
-
+  <%= c.collection_select(:coursetype_intensity_eq, (Coursetype.select :intensity).uniq, :intensity , :intensity) %>
 
   <%= c.submit%>
 <% end %>
@@ -28,7 +25,7 @@
 </div> -->
 
 
-<h1>All GA courses:</h1>
+<h1>GA courses:</h1>
 <br>
 
   <% @courses.each do |course| %>
