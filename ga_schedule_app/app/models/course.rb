@@ -1,4 +1,5 @@
 class Course < ActiveRecord::Base
+
   has_many :enrollments
   has_many :users, through: :enrollments
 
@@ -28,16 +29,21 @@ class Course < ActiveRecord::Base
   has_many :students, -> { where(enrollments: {courserole: :student}) }, through: :enrollments, source: :user
 
  
-  # def self.in_the_past
-  #   where("courses.end_date < ?", Date.yesterday)
+  # def self.past_courses
+  #   where("end_date < ?", Date.today)
   # end
 
-  # scope :in_the_past, -> { where("courses.end_date < ?", Date.yesterday) }
+  # def self.current_courses
+  #   where("? BETWEEN courses.start_date AND courses.end_date", Date.today )
+  # end
 
-   
-   # def self.current_courses
-   #   where("? BETWEEN courses.start_date AND courses.end_date", Date.today )
-   # end
+  scope :past_courses, -> { where(end_date < Date.today) }
+
+  scope :current_courses, -> { where(Date.today BETWEEN start_date AND end_date) }
+
+  scope :future_courses, -> { where(Date.today < start_date) }
+
+  
 
    # def self.course_in_the_future(time)
    #   where(start_date: (Date.today + 1))
