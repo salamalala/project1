@@ -1,13 +1,21 @@
-<!-- <h1>Filter Courses:</h1>
- -->
+<h1>Filter Courses:</h1>
 
-<%#= search_form_for @q do |c| %>
-<!-- 
-<div class="field"> -->
-  <%#=c.label :coursetype %>
 
-  <%#= c.collection_select(:coursetype_id, Coursetype.<!-- all, : -->id, :name)%>
-<!-- </div> -->
+<%= search_form_for @q do |c| %>
+
+<%#= form_for(@course) do |c| %>
+
+  <%=c.label :coursetype_id %>
+
+
+  <%= c.collection_select(:coursetype_id_eq, (Coursetype.order :intensity), :id, :intensity) %>
+
+ 
+
+
+  <%= c.submit%>
+<% end %>
+
 
 <!-- <div class="field"> -->
 <%#=c.label :dates %>
@@ -16,7 +24,7 @@
 <!-- </div>
 -->
 <!-- <div class="actions">
-  <%#= c.submit%>
+ 
 </div> -->
 
 
