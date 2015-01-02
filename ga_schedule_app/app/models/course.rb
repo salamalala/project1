@@ -8,8 +8,8 @@ class Course < ActiveRecord::Base
 
   belongs_to :coursetype
 
-  validates :name, presence: true
 
+  validates :name, presence: true
 
   validates :start_date, date: { before: :end_date , message: 'of the course can\'t be before the end date!' }
 
@@ -28,6 +28,17 @@ class Course < ActiveRecord::Base
   has_many :tas, -> { where(enrollments: {courserole: :ta}) }, through: :enrollments, source: :user
   has_many :students, -> { where(enrollments: {courserole: :student}) }, through: :enrollments, source: :user
 
+
+  scope :past_courses, -> { where("end_date < ?", Date.today) }
+
+  # def self.past_courses
+  #   where(end_date < Date.today)
+  # end
+
+  scope :current_courses, -> { where(" ? BETWEEN start_date AND end_date", Date.today) }
+
+  scope :future_courses, -> { where(" ? < start_date", Date.today) }
+
  
   # def self.past_courses
   #   where("end_date < ?", Date.today)
@@ -37,17 +48,6 @@ class Course < ActiveRecord::Base
   #   where("? BETWEEN courses.start_date AND courses.end_date", Date.today )
   # end
 
-  scope :past_courses, -> { where(end_date < Date.today) }
-
-  scope :current_courses, -> { where(Date.today BETWEEN start_date AND end_date) }
-
-  scope :future_courses, -> { where(Date.today < start_date) }
-
-  
-
-   # def self.course_in_the_future(time)
-   #   where(start_date: (Date.today + 1))
-   # end
 
 
   def teacher_id
@@ -60,8 +60,9 @@ class Course < ActiveRecord::Base
     self.teacher_ids = [value]
     value
   end
-
   #if coursetype intensity is equal to immersive the end date has to be at least 12 weeks after the start date. 
+
+ 
 
   private
   def immersive_course
