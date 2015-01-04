@@ -4,55 +4,63 @@
 
 <%= search_form_for @q do |c| %>
 
-<div class="field">
-  <%=c.label :coursetype_id %>
 
+  <%=c.label :coursetype_id %>
 
   <%= c.collection_select(:coursetype_intensity_eq, (Coursetype.select :intensity).uniq, :intensity , :intensity) %>
 
   <%= c.submit%>
 
-</div>
 <% end %>
 
+<!-- creating radio check boxes for filter functions courses in the past/current/future? -->
 
-<!-- <div class="field"> -->
-<%#=c.label :dates %>
+<%= search_form_for @q do |r| %>
 
-<%#= c.collection_select(:course, Course.course_in_the_past, :id, :name)%>
-<!-- </div>
--->
-<!-- <div class="actions">
+  <%#= c.select_tag(:course_past_courses_eq, options_for_select([[:past_courses, 1], [:current_courses, 2]]) %>
+
+
+  <%#= r.radio_button :time, 1, Course.search(past_courses: true), :checked => true %>
+ <%= r.radio_button :time, 1, :checked => true %> Past Courses
+ <%= r.radio_button :time, 2, :checked => false %> Current Courses
+ <%= r.radio_button :time, 3, :checked => false %> Future Courses
+
+ <%#=  r.radio_button :is_active_true , 1, :checked => @q.is_active_true %>
+
  
-</div> -->
+
+ <%= r.submit%>
+
+  <% end %>
+
 
 
 <h1>GA courses:</h1>
 <br>
 
-  <% @courses.each do |course| %>
-  <div class="allusers">
+<% @courses.each do |course| %>
+<div class="allusers">
 
-    <h1><strong><%= course.name %></strong></h1>
+  <h1><strong><%= course.name %></strong></h1>
 
-    <p><%= course.coursetype.try :name %></p>
+  <p><%= course.coursetype.try :name %></p>
 
-    <h3>Course-Start: </h3>
-    <p><%= course.start_date %></p>
+  <h3>Course-Start: </h3>
+  <p><%= course.start_date %></p>
 
-    <h3>Course-End: </h3>
-    <p><%= course.end_date %></p>
+  <h3>Course-End: </h3>
+  <p><%= course.end_date %></p>
 
-   
 
-    <%= link_to 'Show this course', course, :class => 'btn btn-large btn-primary' %>
-    <%= link_to 'Edit this course', edit_course_path(course), :class => 'btn btn-large btn-primary' if can? :edit, Course %>
-    <%= link_to 'Delete this course', course, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-large btn-primary' if can? :destroy, Course %>
-    </div>
-  <br>
-  <br>
 
-  <% end %>
+  <%= link_to 'Show this course', course, :class => 'btn btn-large btn-primary' %>
+  <%= link_to 'Edit this course', edit_course_path(course), :class => 'btn btn-large btn-primary' if can? :edit, Course %>
+  <%= link_to 'Delete this course', course, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-large btn-primary' if can? :destroy, Course %>
+</div>
+<br>
+<br>
+
+<% end %>
 
 <br>
 

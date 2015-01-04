@@ -28,27 +28,13 @@ class Course < ActiveRecord::Base
   has_many :tas, -> { where(enrollments: {courserole: :ta}) }, through: :enrollments, source: :user
   has_many :students, -> { where(enrollments: {courserole: :student}) }, through: :enrollments, source: :user
 
-
-  scope :past_courses, -> { where("end_date < ?", Date.today) }
-
-  # def self.past_courses
-  #   where(end_date < Date.today)
-  # end
+  scope :past_courses, ->  { where("end_date < ?", Date.today) }
 
   scope :current_courses, -> { where(" ? BETWEEN start_date AND end_date", Date.today) }
 
   scope :future_courses, -> { where(" ? < start_date", Date.today) }
 
  
-  # def self.past_courses
-  #   where("end_date < ?", Date.today)
-  # end
-
-  # def self.current_courses
-  #   where("? BETWEEN courses.start_date AND courses.end_date", Date.today )
-  # end
-
-
 
   def teacher_id
     teachers.first.try :id
