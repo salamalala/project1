@@ -42,6 +42,8 @@ gem 'skrollr-rails'
 
 gem 'date_validator'
 
+gem 'rails_12factor', group: :production
+
 
 group :development, :test do
   gem 'pry-rails'
