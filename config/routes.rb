@@ -18,7 +18,13 @@ Rails.application.routes.draw do
 
   resources :classrooms
 
-  resources :courses
+  resources :courses do
+      collection do
+        get :past, to: 'courses#past_courses'
+        get :current, to: 'courses#current_courses'
+        get :future, to: 'courses#future_courses'
+      end
+    end
 
   devise_for :users
 

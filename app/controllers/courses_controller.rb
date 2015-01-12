@@ -55,6 +55,25 @@ before_action :set_tas, only: [:new, :edit, :update, :create]
     end
   end
 
+
+  def past_courses
+    index
+    @courses = Course.past_courses
+    render :index
+  end
+
+  def current_courses
+    index
+    @courses = Course.current_courses
+    render :index
+  end
+
+  def future_courses
+    index
+    @courses = Course.future_courses
+    render :index
+  end
+
  
 
   private
