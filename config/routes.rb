@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       post "make_not_teacher", to: "users#make_not_teacher"
     end
   end
+  
   get "/my_profile", to: "users#show", as: :my_profile
 
   devise_scope :user do
