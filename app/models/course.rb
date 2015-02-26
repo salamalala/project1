@@ -52,11 +52,15 @@ class Course < ActiveRecord::Base
 
   private
   def immersive_course
+    if intensity
     errors.add :coursetype_id, "\'Immersive Course\' has to be at least 12 weeks long" if coursetype.intensity == "Immersive" && start_date + 12.week > end_date 
+  end
   end
 
   def workshop_course
+    if intensity
     errors.add :coursetype_id, "\'Workshops\' can't be longer than two days" if coursetype.intensity == "Workshop" && start_date + 2.day < end_date 
+    end
   end
 
 
